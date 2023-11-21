@@ -1,21 +1,21 @@
 const pool = require('../db')
 
-const getOil = async (req, res) => {
+const getOil = async (req, res, next) => {
     
     try {
 
     const allOil = await pool.query('SELECT * FROM oil')
 
     res.json(allOil.rows)
-    
+
     } catch(error) {
         
-        console.log(error.message)
+        next(error)
 
     }
 }
 
-const purchasedOil = async (req, res) => {
+const purchasedOil = async (req, res, next) => {
     const { title, description, price, qty } = req.body;
 
     const today = new Date();
@@ -31,8 +31,11 @@ const purchasedOil = async (req, res) => {
         ]);
 
         console.log(result.rows[0])
+        res.send('yep')
     } catch (error) {
-        console.log(error.message)
+
+        next(error)
+
     }
 }
 
