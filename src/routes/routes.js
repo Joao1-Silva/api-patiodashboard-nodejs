@@ -7,11 +7,10 @@ const router = Router();
 
 router.get('/', async (req, res) => {
     
-    // const result = await pool.query('SELECT users.name, level.name AS level_name, level.level AS user_level FROM users JOIN level ON users.level = level.level')
-    // const result = await pool.query('SELECT NOW()')
-    const result = await sql`SELECT * FROM users;`
-    console.log(result)
-    res.json(result.rows[0].now);
+    const result = await sql`SELECT users.name, level.name AS level_name, level.level AS user_level FROM users JOIN level ON users.level = level.level;`
+    // console.log(result)
+    const w = result.row[0]
+    res.json(w.now);
 
 })
 
