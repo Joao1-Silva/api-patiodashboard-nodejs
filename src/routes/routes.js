@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const { getOil, purchasedOil } = require('../controllers/oil.controller')
 // const pool = require('../db');
-import { sql } from '@vercel/postgres';
+const { sql } = require('@vercel/postgres')
 
 const router = Router();
 
