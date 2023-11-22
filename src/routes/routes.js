@@ -8,8 +8,8 @@ const router = Router();
 router.get('/', async (req, res) => {
     
     const result = await sql`SELECT users.name, level.name AS level_name, level.level AS user_level FROM users JOIN level ON users.level = level.level;`
-    // console.log(result)
     const w = result.row[0]
+    console.log(w.now)
     res.json(w.now);
 
 })
