@@ -1,4 +1,5 @@
-const pool = require('../db')
+// const pool = require('../db')
+import { sql } from '@vercel/postgres';
 
 const getOil = async (req, res, next) => {
     
